@@ -95,6 +95,11 @@ send no cache breakpoints, since not every gateway accepts them. Watch the
 sidebar's cache hit rate to see caching working; see
 [The interactive session]({{< relref "./tui.md" >}}) for how to read it.
 
+Anthropic reports `input_tokens` as the fresh, uncached portion after the last
+cache breakpoint. Tau preserves that value as fresh input, retains the separate
+cache-read and cache-write counters, and reports total input as their sum. This
+keeps usage and cost displays aligned with Anthropic's response contract.
+
 #### Codex subscription context limits
 
 OpenAI's public API and the ChatGPT/Codex subscription are separate serving
