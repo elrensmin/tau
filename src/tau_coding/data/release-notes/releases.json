@@ -1,5 +1,59 @@
 [
   {
+    "version": "0.4.1",
+    "date": "2026-08-28",
+    "sections": {
+      "New": [
+        "Set the startup thinking level with a new --thinking/-t CLI flag; it overrides remembered per-model defaults and resumed transcript state without being persisted, and validates against the selected model's supported levels.",
+        "See per-response performance in the TUI sidebar: average tokens per second and average time to first output, measured from provider stream timing and persisted on assistant messages."
+      ],
+      "Changed": [
+        "Accept autocomplete completions with Tab only; Enter now always submits the prompt unchanged.",
+        "Cycle backward through scoped (favorite) models with Shift+Ctrl+P (remappable via model_cycle_reverse), complementing the existing Ctrl+P forward cycling."
+      ]
+    }
+  },
+  {
+    "version": "0.4.0",
+    "date": "2026-08-24",
+    "sections": {
+      "New": [
+        "Run tool-capable GGUF models through Tau's built-in llama.cpp local backend, with the /local workflow for endpoint configuration, diagnostics, model discovery, downloads, and load or unload management.",
+        "Keep model metadata current from models.dev with a generated offline snapshot, background /model refreshes, tau update --models, richer capability metadata, and Pi-compatible reasoning levels including max.",
+        "Recover eligible Hugging Face pre-output route failures automatically, persist successful replacement routes, and expose structured failover diagnostics while preserving explicitly fixed routes.",
+        "Build dynamic providers from trusted extensions and let extensions add live sidebar sections, structured system-prompt sections, and react to session-name or thinking-level changes.",
+        "Show active SYSTEM.md and APPEND_SYSTEM.md sources in the TUI sidebar."
+      ],
+      "Changed": [
+        "Render /system output as transcript Markdown without adding it to model context or session history.",
+        "Compose all discovered user and project APPEND_SYSTEM.md files from broad to specific before explicit CLI append content, deduplicating overlapping paths across reloads."
+      ],
+      "Fixed": [
+        "Require explicit Google finish reasons, retry empty clean closes, preserve partial failures, and reject malformed stream chunks instead of treating incomplete streams as successful.",
+        "Prevent malformed syntax-highlighter spans from crashing the TUI when rendering fenced code blocks.",
+        "Update extension-owned sidebar content in place to prevent flicker and unnecessary widget remounts."
+      ]
+    }
+  },
+  {
+    "version": "0.3.13",
+    "date": "2026-08-21",
+    "sections": {
+      "New": [
+        "Drive Tau from editors and other subprocess hosts through a Pi-compatible JSONL RPC mode, including prompting, state, models, sessions, compaction, direct shell commands, exports, and session naming.",
+        "Install trusted local or Git-hosted extensions with tau install, including pinned Git refs, staging validation, and overwrite protection.",
+        "Use Pi-compatible prompt template arguments such as $1, $@, $ARGUMENTS, defaults, and slices while retaining legacy Tau placeholders."
+      ],
+      "Changed": [
+        "List Tau's utility commands in tau --help and add Discord community links to the documentation website and README."
+      ],
+      "Fixed": [
+        "Send agent_settled reliably after completed, failed, and interrupted runs so extensions receive the final idle state after cleanup.",
+        "Keep TUI prompts readable when the terminal is too narrow for the normal prompt gutter."
+      ]
+    }
+  },
+  {
     "version": "0.3.12",
     "date": "2026-08-17",
     "sections": {
